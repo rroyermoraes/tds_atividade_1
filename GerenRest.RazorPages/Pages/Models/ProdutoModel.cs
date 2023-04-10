@@ -4,6 +4,6 @@ namespace GerenRest.RazorPages.Models {
         public string? Nome { get; set; }
         public string? Descricao { get; set; }
         public float? Preco { get; set; }
-        public List<CategoriaModel>? Categoria { get; set; }
+        public CategoriaModel? CategoriaProduto { get; set; }
     }
 }

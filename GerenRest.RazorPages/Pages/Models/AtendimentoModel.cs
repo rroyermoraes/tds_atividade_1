@@ -4,5 +4,6 @@ namespace GerenRest.RazorPages.Models {
         public MesaModel? MesaAtendida { get; set; }
         public GarconModel? GarconResponsavel { get; set; }
         public List<ProdutoModel>? ListaProdutos { get; set; }
+        public DateTime? HorarioAtendimento { get; set; }
     }
 }
