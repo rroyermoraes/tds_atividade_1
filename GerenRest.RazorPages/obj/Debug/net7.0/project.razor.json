@@ -18675,6 +18675,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Royer\\Documents\\GitHub\\tds_atividade_1\\GerenRest.RazorPages\\Pages\\Garcon\\Create.cshtml",
+      "TargetPath": "Pages\\Garcon\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Royer\\Documents\\GitHub\\tds_atividade_1\\GerenRest.RazorPages\\Pages\\Categoria\\Details.cshtml",
       "TargetPath": "Pages\\Categoria\\Details.cshtml",
       "FileKind": "mvc"

@@ -1,16 +1,16 @@
-using Aula05.RazorPages.Data;
-using Aula05.RazorPages.Models;
+using GerenRest.RazorPages.Data;
+using GerenRest.RazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aula05.RazorPages.Pages.Events
+namespace GerenRest.RazorPages.Pages.Garcon
 {
     public class Delete : PageModel
     {
         private readonly AppDbContext _context;
         [BindProperty]
-        public EventModel EventModel { get; set; } = new();
+        public GarconModel GarconModel { get; set; } = new();
         public Delete(AppDbContext context)
         {
             _context = context;
@@ -18,31 +18,31 @@ namespace Aula05.RazorPages.Pages.Events
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if(id == null || _context.Events == null) {
+            if(id == null || _context.Garcons == null) {
                 return NotFound();
             }
 
-            var eventModel = await _context.Events.FirstOrDefaultAsync(e => e.EventID == id);
+            var garconModel = await _context.Garcons.FirstOrDefaultAsync(e => e.GarconID == id);
 
-            if(eventModel == null) {
+            if(garconModel == null) {
                 return NotFound();
             }
 
-            EventModel = eventModel;
+            GarconModel = garconModel;
 
             return Page();
         }
     
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            var eventToDelete = await _context.Events!.FindAsync(id);
+            var eventToDelete = await _context.Garcons!.FindAsync(id);
 
             if(eventToDelete == null) {
                 return NotFound();
             }
 
             try {
-                _context.Events.Remove(eventToDelete);
+                _context.Garcons.Remove(eventToDelete);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Events/Index");
             } catch(DbUpdateException) {

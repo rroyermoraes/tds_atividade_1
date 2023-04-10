@@ -1,15 +1,15 @@
-using Aula05.RazorPages.Data;
-using Aula05.RazorPages.Models;
+using GerenRest.RazorPages.Data;
+using GerenRest.RazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aula05.RazorPages.Pages.Events
+namespace GerenRest.RazorPages.Pages.Garcon
 {
     public class Index : PageModel
     {
         private readonly AppDbContext _context;
-        public List<EventModel> EventList { get; set; } = new();
+        public List<GarconModel> GarconList { get; set; } = new();
         public Index(AppDbContext context)
         {
             _context = context;
@@ -17,7 +17,7 @@ namespace Aula05.RazorPages.Pages.Events
 
         public async Task<IActionResult> OnGetAsync()
         {
-            EventList = await _context.Events!.ToListAsync();
+            GarconList = await _context.Garcons!.ToListAsync();
             return Page();
         }
     }

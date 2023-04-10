@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aula05.RazorPages.Pages.Events
+namespace GerenRest.RazorPages.Pages.Garcon
 {
     public class Edit : PageModel
     {
         private readonly AppDbContext _context;
         [BindProperty]
-        public AtendimentoModel EventModel { get; set; } = new();
+        public GarconModel GarconModel { get; set; } = new();
         public Edit(AppDbContext context)
         {
             _context = context;
@@ -18,17 +18,17 @@ namespace Aula05.RazorPages.Pages.Events
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if(id == null || _context.Events == null) {
+            if(id == null || _context.Garcons == null) {
                 return NotFound();
             }
 
-            var eventModel = await _context.Events.FirstOrDefaultAsync(e => e.EventID == id);
+            var garconModel = await _context.Garcons.FirstOrDefaultAsync(e => e.GarconID == id);
 
-            if(eventModel == null) {
+            if(garconModel == null) {
                 return NotFound();
             }
 
-            EventModel = eventModel;
+            GarconModel = garconModel;
 
             return Page();
         }
@@ -38,15 +38,16 @@ namespace Aula05.RazorPages.Pages.Events
             if(!ModelState.IsValid)
                 return Page();
 
-            var eventToUpdate = await _context.Events!.FindAsync(id);
+            var eventToUpdate = await _context.Garcons!.FindAsync(id);
 
             if(eventToUpdate == null) {
                 return NotFound();
             }
 
-            eventToUpdate.Name = EventModel.Name;
-            eventToUpdate.Description = EventModel.Description;
-            eventToUpdate.Date = EventModel.Date;
+            eventToUpdate.Nome = GarconModel.Nome;
+            eventToUpdate.Sobrenome = GarconModel.Sobrenome;
+            eventToUpdate.NumIdentificao = GarconModel.NumIdentificao;
+            eventToUpdate.Telefone = GarconModel.Telefone;
 
             try {
                 await _context.SaveChangesAsync();

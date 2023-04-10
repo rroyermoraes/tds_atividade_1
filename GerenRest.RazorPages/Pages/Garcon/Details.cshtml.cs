@@ -1,15 +1,15 @@
-using Aula05.RazorPages.Data;
-using Aula05.RazorPages.Models;
+using GerenRest.RazorPages.Data;
+using GerenRest.RazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aula05.RazorPages.Pages.Events
+namespace GerenRest.RazorPages.Pages.Garcon
 {
     public class Details : PageModel
     {
         private readonly AppDbContext _context;
-        public EventModel EventModel { get; set; } = new();
+        public GarconModel GarconModel { get; set; } = new();
         public Details(AppDbContext context)
         {
             _context = context;
@@ -17,17 +17,17 @@ namespace Aula05.RazorPages.Pages.Events
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if(id == null || _context.Events == null) {
+            if(id == null || _context.Garcons == null) {
                 return NotFound();
             }
 
-            var eventModel = await _context.Events.FirstOrDefaultAsync(e => e.EventID == id);
+            var garconModel = await _context.Garcons.FirstOrDefaultAsync(e => e.GarconID == id);
 
-            if(eventModel == null) {
+            if(garconModel == null) {
                 return NotFound();
             }
 
-            EventModel = eventModel;
+            GarconModel = garconModel;
 
             return Page();
         }

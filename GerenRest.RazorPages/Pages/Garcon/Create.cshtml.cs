@@ -1,16 +1,16 @@
-using Aula05.RazorPages.Data;
-using Aula05.RazorPages.Models;
+using GerenRest.RazorPages.Data;
+using GerenRest.RazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aula05.RazorPages.Pages.Events
+namespace GerenRest.RazorPages.Pages.Garcon
 {
     public class Create : PageModel
     {
         private readonly AppDbContext _context;
         [BindProperty]
-        public EventModel EventModel { get; set; } = new();
+        public GarconModel GarconModel { get; set; } = new();
         public Create(AppDbContext context)
         {
             _context = context;
@@ -22,7 +22,7 @@ namespace Aula05.RazorPages.Pages.Events
                 return Page();
 
             try {
-                _context.Add(EventModel);
+                _context.Add(GarconModel);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Events/Index");
             } catch(DbUpdateException) {
