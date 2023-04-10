@@ -1,5 +1,5 @@
-using Aula05.RazorPages.Data;
-using Aula05.RazorPages.Models;
+using GerenRest.RazorPages.Data;
+using GerenRest.RazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ namespace Aula05.RazorPages.Pages.Events
     {
         private readonly AppDbContext _context;
         [BindProperty]
-        public EventModel EventModel { get; set; } = new();
+        public AtendimentoModel EventModel { get; set; } = new();
         public Edit(AppDbContext context)
         {
             _context = context;
